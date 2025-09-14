@@ -86,3 +86,8 @@ REACT_APP_BACKEND_URL=http://localhost:5000
 
 Feel free to open issues or submit pull requests if you find bugs or have suggestions to improve the project.  
 Your contributions are always welcome!
+
+## 📄 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
