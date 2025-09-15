@@ -1,6 +1,5 @@
 import express, { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import { success, z } from 'zod';
 import { ContentModel, LinkModel, UserModel } from './db';
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
