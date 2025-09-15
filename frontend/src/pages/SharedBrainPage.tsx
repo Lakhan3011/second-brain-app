@@ -28,8 +28,8 @@ export function SharedBrainPage() {
         <div className="p-2 min-h-screen bg-[#eeeeef]">
             <div className="flex flex-wrap pt-4 gap-4">
                 {
-                    contents.map(({ _id, title, link, type }: any) =>
-                        <Card id={_id} type={type} title={title} link={link} />
+                    contents.map(({ title, link, type }: any) =>
+                        <Card type={type} title={title} link={link} />
                     )
                 }
             </div>

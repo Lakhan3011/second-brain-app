@@ -6,7 +6,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteContent } from "../../services/posts";
 
 interface CardProps {
-    id: string;
+    id?: string;
     title: string;
     link: string;
     type: "tweet" | "youtube" | "link"
@@ -29,7 +29,7 @@ export function Card({ id, title, link, type }: CardProps) {
     });
 
     const handleDelete = () => {
-        deleteMutation.mutate(id);
+        deleteMutation.mutate(id as string);
     }
 
     const renderContent = () => {
