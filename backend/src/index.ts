@@ -15,7 +15,10 @@ import { signinSchema, signupSchema } from './validators/auth.schema';
 
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: 'https://second-brain-app-kappa.vercel.app/',
+    credentials: true
+}));
 
 app.use(express.json());
 
