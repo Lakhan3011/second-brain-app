@@ -1,23 +1,25 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import express, { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import { ContentModel, LinkModel, UserModel } from './db';
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
-import { BASE_URL, JWT_SECRET, MONGODB_URI } from './config/config';
+import { config } from './config/config';
 import { userMiddleware } from './middleware';
 import { AuthRequest } from './types';
 import cors from "cors";
 import { generateShortHash } from './hash';
-
 import { signinSchema, signupSchema } from './validators/auth.schema';
+
 
 const app = express();
 app.use(cors());
-const PORT = 3000;
 
 app.use(express.json());
 
-mongoose.connect(MONGODB_URI).then(() => console.log('connected to mongoDB'));
+mongoose.connect(config.mongoUrl).then(() => console.log('connected to mongoDB'));
 
 app.post('/api/v1/signup', async (req: Request, res: Response) => {
     const { username, password } = req.body;
@@ -86,7 +88,7 @@ app.post('/api/v1/signin', async (req: Request, res: Response) => {
                 error: "Invalid username or password",
             });
         }
-        const token = jwt.sign({ username: User.username, id: User._id }, JWT_SECRET, {
+        const token = jwt.sign({ username: User.username, id: User._id }, config.jwtSecret, {
             expiresIn: '1h'
         });
 
@@ -275,6 +277,6 @@ app.get('/api/v1/brain/share/:shareLink', async (req: Request, res: Response) =>
     }
 })
 
-app.listen(PORT, () => {
-    console.log(`Server is listening on PORT ${PORT}`)
+app.listen(config.port, () => {
+    console.log(`Server is listening on PORT ${config.port}`)
 })
