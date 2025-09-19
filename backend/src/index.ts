@@ -13,10 +13,16 @@ import cors from "cors";
 import { generateShortHash } from './hash';
 import { signinSchema, signupSchema } from './validators/auth.schema';
 
-
 const app = express();
+
+
+
 app.use(cors({
-    origin: 'https://second-brain-app-kappa.vercel.app/',
+    origin: [
+        'https://second-brain-app-kappa.vercel.app',
+        'http://localhost:5173',
+        "http://127.0.0.1:5173"
+    ],
     credentials: true
 }));
 
