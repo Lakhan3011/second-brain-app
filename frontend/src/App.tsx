@@ -3,7 +3,7 @@ import { SharedBrainPage } from "./pages/SharedBrainPage"
 import Signin from "./pages/Signin"
 import { Signup } from "./pages/Signup"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-
+import { Toaster } from "react-hot-toast"
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/share/:hash" element={<SharedBrainPage />} />
       </Routes>
+      <Toaster position="top-center" reverseOrder={false} />
     </BrowserRouter>
   )
 }

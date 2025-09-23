@@ -21,8 +21,10 @@ export function SharedBrainPage() {
         return <p>Loading shared brain...</p>
     }
 
-    if (error)
-        return <p>Link expired or invalid</p>
+    if (error) {
+        return (
+            <p>Link expired or invalid</p>)
+    }
 
     return (
         <div className="p-2 min-h-screen bg-[#eeeeef]">

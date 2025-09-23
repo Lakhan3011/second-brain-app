@@ -4,6 +4,7 @@ import { Input } from "../components/ui/Input"
 import { signinUser } from "../services/auth"
 import React, { useEffect, useRef, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import toast from "react-hot-toast"
 
 
 function Signin() {
@@ -20,7 +21,8 @@ function Signin() {
     const mutation = useMutation({
         mutationFn: signinUser,
         onSuccess: (data) => {
-            alert(data.message)
+            // alert(data.message);
+            toast.success(data.message);
             const jwt = data.token;
             localStorage.setItem("token", jwt);
             setUsername("");
@@ -28,7 +30,8 @@ function Signin() {
             navigate('/dashboard');
         },
         onError: (error: any) => {
-            alert(error.response?.data?.error || "Signin failed")
+            // alert(error.response?.data?.error || "Signin failed");
+            toast.error(error.response?.data?.error || "Signin failed");
         }
     })
 

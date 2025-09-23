@@ -4,6 +4,7 @@ import { YoutubeIcon } from "../../icons/YoutubeIcon";
 import { TwitterIcon } from "../../icons/TwitterIcon";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteContent } from "../../services/posts";
+import toast from "react-hot-toast";
 
 interface CardProps {
     id?: string;
@@ -19,12 +20,14 @@ export function Card({ id, title, link, type }: CardProps) {
     const deleteMutation = useMutation({
         mutationFn: deleteContent,
         onSuccess: () => {
-            alert("Content deleted successfully");
+            //alert("Content deleted successfully");
+            toast.success("Content deleted successfully");
             queryClient.invalidateQueries({ queryKey: ['contents'] });
         },
 
         onError: (error: any) => {
-            alert(error.response?.data?.message || "Failed to deleted content")
+            //alert(error.response?.data?.message || "Failed to deleted content")
+            toast.error(error.response?.data?.message || "Failed to deleted content")
         }
     });
 

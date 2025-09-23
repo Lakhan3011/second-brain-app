@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Input } from "./Input";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addContent } from "../../services/posts";
+import toast from "react-hot-toast";
 
 
 interface ModalProps {
@@ -26,14 +27,16 @@ export const Modal = ({ open, onClose }: ModalProps) => {
     const mutation = useMutation({
         mutationFn: addContent,
         onSuccess: (data) => {
-            alert(data.message);
+            // alert(data.message);
+            toast.success(data.message);
             queryClient.invalidateQueries({ queryKey: ["contents"] });
             setTitle('');
             setLink('');
             onClose();
         },
         onError: (error: any) => {
-            alert(error.response?.data?.error || "Content not added")
+            // alert(error.response?.data?.error || "Content not added");
+            toast.error(error.response?.data?.error || "Content not added");
         }
     })
 

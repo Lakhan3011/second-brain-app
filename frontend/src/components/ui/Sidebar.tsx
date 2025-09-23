@@ -23,7 +23,7 @@ export function Sidebar({ onFilterChange }: SidebarProps) {
                     <button className="text-purple-600">
                         <Logo />
                     </button>
-                    <span className="text-2xl font-mono">Second Brain</span>
+                    <span className="text-2xl font-mono cursor-pointer">Second Brain</span>
                 </div>
                 <div className="text-xl font-mono">
                     <SidebarItem icon={<TwitterIcon />} text="Tweet" onClick={() => onFilterChange("tweet")} />

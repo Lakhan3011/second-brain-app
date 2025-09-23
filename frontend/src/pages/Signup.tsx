@@ -4,6 +4,7 @@ import { Input } from "../components/ui/Input";
 import { useMutation } from "@tanstack/react-query";
 import { signupUser } from "../services/auth";
 import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 
 export function Signup() {
@@ -15,20 +16,23 @@ export function Signup() {
     const mutation = useMutation({
         mutationFn: signupUser,
         onSuccess: (data) => {
-            alert(data.message);
+            // alert(data.message);
+            toast.success(data.message);
             setUsername("");
             setPassword("");
             navigate('/signin');
         },
         onError: (error: any) => {
-            alert(error.response?.data?.error || "Signup failed")
+            // alert(error.response?.data?.error || "Signup failed");
+            toast.error(error.response?.data?.error || "Signup failed");
         }
     })
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (!username || !password) {
-            alert("Username and Password required");
+            // alert("Username and Password required");
+            toast.error("Username and Password required");
             return;
         }
         mutation.mutate({ username, password });

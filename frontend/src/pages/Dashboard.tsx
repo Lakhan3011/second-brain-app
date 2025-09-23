@@ -7,6 +7,7 @@ import { ShareIcon } from "../icons/ShareIcon"
 import { Sidebar } from "../components/ui/Sidebar"
 import { useMutation, useQuery } from "@tanstack/react-query"
 import { fetchContents, shareContents } from "../services/posts"
+import toast from "react-hot-toast"
 
 
 export function Dashboard() {
@@ -17,10 +18,11 @@ export function Dashboard() {
         mutationFn: shareContents,
         onSuccess: (data) => {
             navigator.clipboard.writeText(`https://second-brain-app-kappa.vercel.app/share/${data.shareableUrl}`);
-            alert("Share link copied to clipboard! 🚀");
+            toast.success("Share link copied to clipboard! 🚀");
         },
         onError: (error: any) => {
-            alert(error.response?.data?.error || 'Failed to generate share link')
+            // alert(error.response?.data?.error || 'Failed to generate share link')
+            toast.error(error.response?.data?.error || 'Failed to generate share link')
         }
     })
 
