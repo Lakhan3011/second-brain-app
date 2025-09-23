@@ -8,6 +8,7 @@ import { Sidebar } from "../components/ui/Sidebar"
 import { useMutation, useQuery } from "@tanstack/react-query"
 import { fetchContents, shareContents } from "../services/posts"
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export function Dashboard() {
     const [modalOpen, setModalOpen] = useState(false);
@@ -16,7 +17,7 @@ export function Dashboard() {
     const shareMutation = useMutation({
         mutationFn: shareContents,
         onSuccess: (data) => {
-            navigator.clipboard.writeText(`http://localhost:5173/share/${data.shareableUrl}`);
+            navigator.clipboard.writeText(`${BACKEND_URL}/api/v1/brain/share/${data.shareableUrl}`);
             alert("Share link copied to clipboard! 🚀");
         },
         onError: (error: any) => {
