@@ -16,7 +16,7 @@ export function Dashboard() {
     const shareMutation = useMutation({
         mutationFn: shareContents,
         onSuccess: (data) => {
-            navigator.clipboard.writeText(`second-brain-app-kappa.vercel.app/share/${data.shareableUrl}`);
+            navigator.clipboard.writeText(`https://second-brain-app-kappa.vercel.app/share/${data.shareableUrl}`);
             alert("Share link copied to clipboard! 🚀");
         },
         onError: (error: any) => {
