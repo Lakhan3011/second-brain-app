@@ -44,7 +44,7 @@ second-brain-app/
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/second-brain-app.git
+git clone https://github.com/Lakhan3011/second-brain-app.git
 cd second-brain-app
 ```
 
@@ -82,7 +82,7 @@ Create a `.env` file in the `frontend/` folder with the following content:
 REACT_APP_BACKEND_URL=http://localhost:5000
 ```
 
-## ❤️ Contribution
+## 🤝 Contribution
 
 Feel free to open issues or submit pull requests if you find bugs or have suggestions to improve the project.  
 Your contributions are always welcome!
